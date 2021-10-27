@@ -1,0 +1,75 @@
+---
+title:"20211006-1 
+author: "Vincent"
+date: "2021/10/6"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+##
+```{r}
+list("John",178,T)
+```
+
+
+```{r}
+c("John","Mary")
+```
+```{r}
+typeof(c("John","Mary"))
+typeof(list(15,"Mary"))
+```
+```{r}
+list(15,"Mary",list("Mary",35))
+```
+```{r}
+c("John","Mary")[[2]]
+```
+
+```{r}
+list("John",42,list("Mary",35))[[3]][[1]]
+```
+```{r}
+personName = c("John","Mary")
+personName
+
+```
+```{r}
+list("John", 42, 
+  list("Mary", 35,
+    c(1, 22, 53))
+  )[[3]][[3]][[2]]
+```
+```{r}
+list(c("a", "b"), c("c", "d"))[[2]][[2]]
+```
+```{r}
+c(list("a",1), list("c",2))
+```
+
+```{r}
+list(54, "male", "north", 100, 
+  32, "female", "south", 25,
+  28, "female", "east", NA, 
+  20, "male", "east", 77)
+
+```
+```{r}
+list(
+  list(name = "principle of economic",
+       time =  "Wednesday",
+       place ="social science college"), 
+  list(name = "accounting",
+       time = "Thusday" ,
+       place = "Business college") 
+)
+```
+
+
+```{r}
+example <- c(125,52)
+```
