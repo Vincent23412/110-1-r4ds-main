@@ -1,0 +1,91 @@
+---
+title: "Untitled"
+author: "Vincent"
+date: "2021/10/31"
+output: html_document
+---
+```{r}
+ install.packages('curl')
+# Observation by observation
+concerts_obo <-
+  jsonlite::fromJSON("https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=17", simplifyDataFrame = F)
+# Feature by feature
+concerts_fbf <-
+  jsonlite::fromJSON("https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=17", simplifyDataFrame = T)
+View(concerts_fbf)
+```
+
+```{r}
+ex <- concerts_obo
+```
+
+
+Exercise 3.2 From concerts_obo,
+
+Retrieve the 3rd and 5th concert observations and bind the result value with an object name concerts_sampled.
+
+For the second concert, what are its first show’s time and location? Retrieve the information and bind the value with firstShowInfo.
+
+```{r}
+concerts_sampled <- concerts_obo[c(3,5)]
+
+firstShowInfo <- concerts_obo[[2]][["showInfo"]][[1]][c("time","location")]
+```
+
+
+
+Exercise 3.3 From concerts_obo, due to Covid-19 the 3rd concert’s 1st show time is changed to “2022/01/31 19:30:00” and the location is changed to “Taichung Opera House”, please change the information
+
+```{r}
+concerts_obo[[3]][["showInfo"]][[1]][c("time","location")] <- list("time" = "2022/01/31 19:30:00","location" = "Taichung Opera House")
+```
+
+Exercise 3.4 How do you add the new born if you use JohnsFamilyCopy3$children[3] <-:
+
+
+Copy
+JohnsFamilyCopy3 <- JohnsFamily
+JohnsFamilyCopy3$children[3] <-
+
+```{r}
+JohnsFamily <-
+  list(
+    name = "John", 
+    age = 35,
+    spouse = list(
+      name = "Mary", 
+      age = 32),
+    children = list(
+      list(
+        name = "Bill", 
+        age = 5),
+      list(
+        name = "Jane", 
+        age = 3)
+    )
+  )
+newborn <- list(
+  list(
+  name = "Lisa" ,
+  age = 0
+) )
+JohnsFamilyCopy3 <- JohnsFamily
+JohnsFamilyCopy3$children[3] <- newborn
+
+
+```
+
+Exercise 3.5 The 5th concert decides to add one more show which shares the same show information as its first show except the date is 2 days later.
+
+```{r}
+show2 <- concerts_obo[[5]][["showInfo"]][[1]]
+concerts_obo[[5]][["showInfo"]][[2]] <- show2
+concerts_obo[[5]][["showInfo"]][[2]][[1]] <-  "2021/12/27 19:30:00" 
+```
+
+Exercise 3.6 Due to Covid-19 concerts 2, 5, 7 are cancelled. Remove those three concerts from concerts_obo.
+
+```{r}
+concerts_obo <- concerts_obo[-c(2,5,7)]
+
+```
