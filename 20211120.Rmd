@@ -1,0 +1,124 @@
+---
+title:"20211006-1 
+author: "Vincent"
+date: "2021/10/6"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+##
+```{r}
+list("John",178,T)
+```
+
+
+```{r}
+c("John","Mary")
+```
+```{r}
+typeof(c("John","Mary"))
+typeof(list(15,"Mary"))
+```
+```{r}
+list(15,"Mary",list("Mary",35))
+```
+```{r}
+c("John","Mary")[[2]]
+```
+
+```{r}
+list("John",42,list("Mary",35))[[3]][[1]]
+```
+```{r}
+personName = c("John","Mary")
+personName
+
+```
+```{r}
+list("John", 42, 
+  list("Mary", 35,
+    c(1, 22, 53))
+  )[[3]][[3]][[2]]
+```
+```{r}
+list(c("a", "b"), c("c", "d"))[[2]][[2]]
+```
+```{r}
+c(list("a",1), list("c",2))
+```
+
+```{r}
+list(54, "male", "north", 100, 
+  32, "female", "south", 25,
+  28, "female", "east", NA, 
+  20, "male", "east", 77)
+
+```
+```{r}
+list(
+  list(name = "principle of economic",
+       time =  "Wednesday",
+       place ="social science college"), 
+  list(name = "accounting",
+       time = "Thusday" ,
+       place = "Business college") 
+)
+```
+
+
+```{r}
+example <- c(125,52)
+```
+
+
+```{r}
+customerExperience <- c('very happy','very happy','satisfied','satisfied','satisfied','very happy','bad','bad','satisfied','satisfied','bad','happy','happy','very happy','happy','happy','satisfied','very happy','very happy','satisfied','satisfied','very happy','satisfied','bad','very happy','very bad','very happy','bad','bad','very bad')
+
+customerExperience_1 = factor(customerExperience)
+table(customerExperience_1)
+```
+
+```{r}
+subsidiaries <- list()
+subsidiaries$boston <- c("2020 Oct. 13 15:00:00", "2019 Apr. 10 09:30:00") # boston time zone
+subsidiaries$mykonos <- c("14 Jan., 2021 03:27:00", "8 Aug., 2020 11:20:00") # mykonos time zone
+
+subsidiaries$boston <- lubridate::ymd_hms(c("2020 Oct. 13 15:00:00", "2019 Apr. 10 09:30:00"))
+subsidiaries$mykonos <- lubridate::dmy_hms(c("14 Jan., 2021 03:27:00", "8 Aug., 2020 11:20:00")) 
+time_deli <-
+  lubridate::with_tz(
+    c(
+      subsidiaries$boston ,
+      subsidiaries$mykonos
+    ),
+    tz = "Asia/Kolkata"
+  )
+time_deli
+```
+```{r}
+dfExercise <- list()
+dataSet1 <- data.frame(
+  name=c("John", "Mary", "Ben"),
+  age=c(33, 45, NA)
+)
+dataSet1$children[[1]] = "Jane"
+dataSet1$children[[2]] = c("Bill" , "Ken" )
+dataSet1$children[[3]] = "William"
+
+dataSet1$children[[1]][[1]] = 2
+dataSet1$children[[2]][[1]] = 3
+dataSet1$children[[2]][[2]] = 0
+dataSet1$children[[3]][[1]] = 10
+
+dataSet1$children[[1]][[1]] # shows the first person's 1st child: name is Jane, age is 2
+dataSet1$children[[2]][[1]] # shows the second person's 1st child: name is Bill, age =3
+dataSet1$children[[2]][[2]] # the second pseron's 2nd child: name is Ken, age=0
+dataSet1$children[[3]][[1]] # the 3rd person's 1st child: name is William, age =10
+dataSet1
+```
+
+
